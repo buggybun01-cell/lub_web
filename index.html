@@ -1,0 +1,1234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Our Little Universe ❤️</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Sans+Tamil:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <style>
+
+        /* =========================
+           GENERAL
+        ========================= */
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: "Inter", Arial, sans-serif;
+            background: #050510;
+            color: white;
+            overflow-x: hidden;
+            cursor: none;
+        }
+
+        /* =========================
+           STAR BACKGROUND
+        ========================= */
+
+        body::before {
+            content: "";
+            position: fixed;
+            inset: 0;
+            background-image:
+                radial-gradient(white 1px, transparent 1px),
+                radial-gradient(rgba(255,255,255,0.7) 1px, transparent 1px);
+            background-size: 80px 80px, 130px 130px;
+            background-position: 0 0, 40px 60px;
+            opacity: 0.35;
+            pointer-events: none;
+            z-index: -2;
+        }
+
+        body::after {
+            content: "";
+            position: fixed;
+            inset: 0;
+            background:
+                radial-gradient(circle at 20% 20%, rgba(255, 70, 120, 0.12), transparent 30%),
+                radial-gradient(circle at 80% 30%, rgba(120, 80, 255, 0.12), transparent 30%),
+                radial-gradient(circle at 50% 80%, rgba(255, 50, 100, 0.08), transparent 35%);
+            pointer-events: none;
+            z-index: -3;
+        }
+
+        /* =========================
+           CUSTOM CURSOR
+        ========================= */
+
+        .cursor {
+            position: fixed;
+            width: 12px;
+            height: 12px;
+            background: #ff4d88;
+            border-radius: 50%;
+            pointer-events: none;
+            transform: translate(-50%, -50%);
+            z-index: 9999;
+            box-shadow:
+                0 0 10px #ff4d88,
+                0 0 25px #ff4d88;
+        }
+
+        .cursor-glow {
+            position: fixed;
+            width: 40px;
+            height: 40px;
+            border: 1px solid rgba(255, 77, 136, 0.5);
+            border-radius: 50%;
+            pointer-events: none;
+            transform: translate(-50%, -50%);
+            z-index: 9998;
+            transition: 0.08s ease;
+        }
+
+        /* =========================
+           HERO
+        ========================= */
+
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 30px;
+        }
+
+        .hero h1 {
+            font-size: clamp(45px, 8vw, 90px);
+            font-weight: 700;
+            background: linear-gradient(
+                90deg,
+                #ff4d88,
+                #ff9fba,
+                #ffffff,
+                #ff4d88
+            );
+            background-size: 300%;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: gradientMove 5s infinite linear;
+        }
+
+        @keyframes gradientMove {
+            0% {
+                background-position: 0%;
+            }
+
+            100% {
+                background-position: 300%;
+            }
+        }
+
+        .hero p {
+            margin-top: 20px;
+            font-size: 18px;
+            color: #cfcfcf;
+            max-width: 650px;
+            line-height: 1.7;
+        }
+
+        .scroll-btn {
+            margin-top: 40px;
+            padding: 13px 25px;
+            border: 1px solid rgba(255,255,255,0.2);
+            border-radius: 30px;
+            background: rgba(255,255,255,0.05);
+            color: white;
+            text-decoration: none;
+            transition: 0.3s;
+        }
+
+        .scroll-btn:hover {
+            background: #ff4d88;
+            box-shadow: 0 0 25px rgba(255,77,136,0.6);
+            transform: translateY(-3px);
+        }
+
+        /* =========================
+           SECTIONS
+        ========================= */
+
+        section {
+            padding: 100px 20px;
+            max-width: 1100px;
+            margin: auto;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .section-title h2 {
+            font-size: 40px;
+            margin-bottom: 12px;
+        }
+
+        .section-title p {
+            color: #aaa;
+        }
+
+        /* =========================
+           LOVE LETTER
+        ========================= */
+
+        .letter-section {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .envelope-container {
+            width: 340px;
+            height: 230px;
+            position: relative;
+            cursor: pointer;
+            margin-top: 30px;
+        }
+
+        .envelope {
+            width: 100%;
+            height: 100%;
+            background: #d94f76;
+            position: absolute;
+            bottom: 0;
+            border-radius: 8px;
+            box-shadow:
+                0 20px 60px rgba(0,0,0,0.5),
+                0 0 30px rgba(255,77,136,0.2);
+        }
+
+        .envelope::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            border-left: 170px solid transparent;
+            border-right: 170px solid transparent;
+            border-top: 120px solid #ef6c91;
+            transform-origin: top;
+            transition: 0.8s;
+            z-index: 3;
+        }
+
+        .envelope::after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            border-left: 170px solid #c94369;
+            border-top: 115px solid transparent;
+            border-right: 170px solid #c94369;
+            border-bottom: 115px solid #c94369;
+            border-radius: 8px;
+            z-index: 2;
+        }
+
+        .envelope.open::before {
+            transform: rotateX(180deg);
+            z-index: 1;
+        }
+
+        .letter {
+            position: absolute;
+            width: 90%;
+            height: 190px;
+            background: #fffaf5;
+            color: #333;
+            left: 5%;
+            bottom: 10px;
+            padding: 25px;
+            border-radius: 6px;
+            transition: 1s;
+            z-index: 2;
+            overflow-y: auto;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+        }
+
+        .envelope.open .letter {
+            bottom: 150px;
+            height: 330px;
+            z-index: 5;
+        }
+
+        /* Tamil ONLY inside letter */
+
+        .tamil-letter {
+            font-family:
+                "Noto Sans Tamil",
+                "Latha",
+                "Vijaya",
+                sans-serif;
+
+            font-size: 17px;
+            line-height: 2;
+            text-align: center;
+        }
+
+        .letter-title {
+            text-align: center;
+            font-family: "Inter", Arial, sans-serif;
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 15px;
+            color: #d94f76;
+        }
+
+        .letter-hint {
+            margin-top: 35px;
+            color: #aaa;
+            text-align: center;
+            font-size: 14px;
+        }
+
+        /* =========================
+           MUSIC
+        ========================= */
+
+        .music-box {
+            max-width: 600px;
+            margin: auto;
+            padding: 35px;
+            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 20px;
+            text-align: center;
+            backdrop-filter: blur(10px);
+        }
+
+        .music-icon {
+            font-size: 50px;
+            margin-bottom: 20px;
+        }
+
+        .music-box h3 {
+            margin-bottom: 10px;
+        }
+
+        .music-box p {
+            color: #aaa;
+            margin-bottom: 25px;
+        }
+
+        audio {
+            width: 100%;
+        }
+
+        /* =========================
+           PHOTO GALLERY
+        ========================= */
+
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+        }
+
+        .photo-card {
+            height: 350px;
+            border-radius: 18px;
+            overflow: hidden;
+            position: relative;
+            border: 1px solid rgba(255,255,255,0.1);
+            background: rgba(255,255,255,0.05);
+        }
+
+        .photo-card img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: 0.6s;
+        }
+
+        .photo-card:hover img {
+            transform: scale(1.1);
+        }
+
+        .photo-card::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(
+                to top,
+                rgba(0,0,0,0.6),
+                transparent
+            );
+            pointer-events: none;
+        }
+
+        /* =========================
+           TIMELINE
+        ========================= */
+
+        .timeline {
+            position: relative;
+            max-width: 800px;
+            margin: auto;
+        }
+
+        .timeline::before {
+            content: "";
+            position: absolute;
+            left: 50%;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: rgba(255,77,136,0.5);
+            transform: translateX(-50%);
+        }
+
+        .timeline-item {
+            width: 50%;
+            padding: 20px 40px;
+            position: relative;
+        }
+
+        .timeline-item:nth-child(odd) {
+            left: 0;
+            text-align: right;
+        }
+
+        .timeline-item:nth-child(even) {
+            left: 50%;
+        }
+
+        .timeline-dot {
+            position: absolute;
+            top: 25px;
+            width: 15px;
+            height: 15px;
+            background: #ff4d88;
+            border-radius: 50%;
+            box-shadow: 0 0 15px #ff4d88;
+        }
+
+        .timeline-item:nth-child(odd) .timeline-dot {
+            right: -7px;
+        }
+
+        .timeline-item:nth-child(even) .timeline-dot {
+            left: -7px;
+        }
+
+        .timeline-content {
+            padding: 25px;
+            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
+        }
+
+        .timeline-content h3 {
+            color: #ff709c;
+            margin-bottom: 8px;
+        }
+
+        .timeline-content p {
+            color: #bbb;
+            line-height: 1.6;
+        }
+
+        /* =========================
+           HEART
+        ========================= */
+
+        .heart-section {
+            text-align: center;
+        }
+
+        .heart {
+            width: 100px;
+            height: 100px;
+            background: #ff4d88;
+            margin: 60px auto;
+            position: relative;
+            transform: rotate(-45deg);
+            animation: heartbeat 1.2s infinite;
+            box-shadow: 0 0 40px rgba(255,77,136,0.7);
+        }
+
+        .heart::before,
+        .heart::after {
+            content: "";
+            width: 100px;
+            height: 100px;
+            background: #ff4d88;
+            border-radius: 50%;
+            position: absolute;
+        }
+
+        .heart::before {
+            top: -50px;
+            left: 0;
+        }
+
+        .heart::after {
+            top: 0;
+            left: 50px;
+        }
+
+        @keyframes heartbeat {
+            0%, 100% {
+                transform: rotate(-45deg) scale(1);
+            }
+
+            50% {
+                transform: rotate(-45deg) scale(1.15);
+            }
+        }
+
+        /* =========================
+           SECRET MESSAGE
+        ========================= */
+
+        .secret-section {
+            text-align: center;
+        }
+
+        .secret-btn {
+            padding: 15px 30px;
+            border: none;
+            border-radius: 30px;
+            background: linear-gradient(135deg, #ff4d88, #d6336c);
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+            transition: 0.3s;
+            box-shadow: 0 10px 30px rgba(255,77,136,0.25);
+        }
+
+        .secret-btn:hover {
+            transform: translateY(-3px) scale(1.03);
+            box-shadow: 0 15px 35px rgba(255,77,136,0.4);
+        }
+
+        .secret-message {
+            max-width: 650px;
+            margin: 30px auto 0;
+            padding: 30px;
+            background: rgba(255,255,255,0.05);
+            border-radius: 20px;
+            border: 1px solid rgba(255,255,255,0.1);
+            color: #ddd;
+            line-height: 1.8;
+            display: none;
+            animation: fadeIn 1s ease;
+        }
+
+        .secret-message.show {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* =========================
+           FOOTER
+        ========================= */
+
+        footer {
+            padding: 60px 20px;
+            text-align: center;
+            color: #777;
+            border-top: 1px solid rgba(255,255,255,0.08);
+        }
+
+        footer span {
+            color: #ff4d88;
+        }
+
+        /* =========================
+           PARTICLES
+        ========================= */
+
+        .particle {
+            position: fixed;
+            pointer-events: none;
+            font-size: 18px;
+            animation: particleFly 1.5s ease-out forwards;
+            z-index: 9997;
+        }
+
+        @keyframes particleFly {
+            from {
+                opacity: 1;
+                transform: translate(0, 0) scale(1);
+            }
+
+            to {
+                opacity: 0;
+                transform:
+                    translate(
+                        var(--x),
+                        var(--y)
+                    )
+                    scale(0);
+            }
+        }
+
+        /* =========================
+           MOBILE
+        ========================= */
+
+        @media (max-width: 768px) {
+
+            body {
+                cursor: default;
+            }
+
+            .cursor,
+            .cursor-glow {
+                display: none;
+            }
+
+            section {
+                padding: 75px 20px;
+            }
+
+            .hero h1 {
+                font-size: 48px;
+            }
+
+            .hero p {
+                font-size: 15px;
+            }
+
+            .section-title h2 {
+                font-size: 32px;
+            }
+
+            .envelope-container {
+                width: 300px;
+                height: 200px;
+            }
+
+            .envelope::before {
+                border-left-width: 150px;
+                border-right-width: 150px;
+            }
+
+            .envelope::after {
+                border-left-width: 150px;
+                border-right-width: 150px;
+            }
+
+            .envelope.open .letter {
+                bottom: 130px;
+                height: 350px;
+            }
+
+            .tamil-letter {
+                font-size: 15px;
+                line-height: 1.9;
+            }
+
+            .gallery {
+                grid-template-columns: 1fr;
+            }
+
+            .photo-card {
+                height: 400px;
+            }
+
+            .timeline::before {
+                left: 10px;
+            }
+
+            .timeline-item,
+            .timeline-item:nth-child(even) {
+                width: 100%;
+                left: 0;
+                text-align: left;
+                padding-left: 40px;
+                padding-right: 10px;
+            }
+
+            .timeline-item:nth-child(odd) {
+                text-align: left;
+            }
+
+            .timeline-item:nth-child(odd) .timeline-dot,
+            .timeline-item:nth-child(even) .timeline-dot {
+                left: 3px;
+                right: auto;
+            }
+
+            .music-box {
+                padding: 25px 18px;
+            }
+        }
+
+    </style>
+</head>
+
+<body>
+
+    <!-- CUSTOM CURSOR -->
+
+    <div class="cursor"></div>
+    <div class="cursor-glow"></div>
+
+
+    <!-- =========================
+         HERO
+    ========================== -->
+
+    <section class="hero" id="home">
+
+        <h1>Our Little Universe ❤️</h1>
+
+        <p>
+            A little corner of the internet made just for us.
+            Every memory, every moment, and every feeling lives here.
+        </p>
+
+        <a href="#letter" class="scroll-btn">
+            Enter Our Story ↓
+        </a>
+
+    </section>
+
+
+    <!-- =========================
+         LOVE LETTER
+    ========================== -->
+
+    <section class="letter-section" id="letter">
+
+        <div class="section-title">
+
+            <h2>A Letter For You 💌</h2>
+
+            <p>
+                Click the envelope to open your letter.
+            </p>
+
+        </div>
+
+
+        <div class="envelope-container" onclick="openLetter()">
+
+            <div class="envelope" id="envelope">
+
+                <div class="letter">
+
+                    <div class="letter-title">
+                        My Love ❤️
+                    </div>
+
+                    <!-- ONLY THIS PART IS IN TAMIL -->
+
+                    <div class="tamil-letter">
+
+                        என் இதயம் துடிக்கும் ஒவ்வொரு நொடியும்,<br>
+
+                        என் சுவாசம் தொடரும் ஒவ்வொரு கணமும்,<br>
+
+                        என் அன்பு உனக்காக மட்டுமே இருக்கும்.<br><br>
+
+                        காலம் மாறினாலும்,<br>
+
+                        தூரம் அதிகரித்தாலும்,<br>
+
+                        என் மனதில் உனக்கான இடம் மட்டும்<br>
+
+                        என்றும் மாறாது.<br><br>
+
+                        என்றும் உன் நினைவுகளுடன்,<br>
+
+                        <strong>நான்.</strong>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <p class="letter-hint">
+            Made with love, just for you ❤️
+        </p>
+
+    </section>
+
+
+    <!-- =========================
+         MUSIC
+    ========================== -->
+
+    <section id="music">
+
+        <div class="section-title">
+
+            <h2>Our Song 🎵</h2>
+
+            <p>
+                Press play and let the memories play along.
+            </p>
+
+        </div>
+
+
+        <div class="music-box">
+
+            <div class="music-icon">
+                🎶
+            </div>
+
+            <h3>Our Favourite Song</h3>
+
+            <p>
+                A song that reminds me of you.
+            </p>
+
+            <audio controls>
+
+                <source
+                    src="favourite_song.mp3"
+                    type="audio/mpeg"
+                >
+
+                Your browser does not support the audio element.
+
+            </audio>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         PHOTO GALLERY
+    ========================== -->
+
+    <section id="gallery">
+
+        <div class="section-title">
+
+            <h2>Our Memories 📸</h2>
+
+            <p>
+                Some moments that will always stay with me.
+            </p>
+
+        </div>
+
+
+        <div class="gallery">
+
+            <div class="photo-card">
+
+                <img
+                    src="photo1.jpg"
+                    alt="Our Memory 1"
+                >
+
+            </div>
+
+
+            <div class="photo-card">
+
+                <img
+                    src="photo2.jpg"
+                    alt="Our Memory 2"
+                >
+
+            </div>
+
+
+            <div class="photo-card">
+
+                <img
+                    src="photo3.jpg"
+                    alt="Our Memory 3"
+                >
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         TIMELINE
+    ========================== -->
+
+    <section id="timeline">
+
+        <div class="section-title">
+
+            <h2>Our Story 🕐</h2>
+
+            <p>
+                Every beautiful story has a beginning.
+            </p>
+
+        </div>
+
+
+        <div class="timeline">
+
+
+            <div class="timeline-item">
+
+                <div class="timeline-dot"></div>
+
+                <div class="timeline-content">
+
+                    <h3>The Beginning</h3>
+
+                    <p>
+                        The day our story started.
+                        A simple moment that slowly became
+                        something very special.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="timeline-item">
+
+                <div class="timeline-dot"></div>
+
+                <div class="timeline-content">
+
+                    <h3>Getting Closer</h3>
+
+                    <p>
+                        We started talking more,
+                        sharing more, and becoming
+                        an important part of each other's lives.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="timeline-item">
+
+                <div class="timeline-dot"></div>
+
+                <div class="timeline-content">
+
+                    <h3>Beautiful Memories</h3>
+
+                    <p>
+                        Every laugh, every conversation,
+                        every little moment became a memory
+                        worth keeping forever.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="timeline-item">
+
+                <div class="timeline-dot"></div>
+
+                <div class="timeline-content">
+
+                    <h3>Today</h3>
+
+                    <p>
+                        And here we are,
+                        still creating our little universe
+                        together.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         HEART
+    ========================== -->
+
+    <section class="heart-section">
+
+        <div class="section-title">
+
+            <h2>One Heart ❤️</h2>
+
+            <p>
+                Two people. One beautiful story.
+            </p>
+
+        </div>
+
+
+        <div class="heart"></div>
+
+    </section>
+
+
+    <!-- =========================
+         SECRET MESSAGE
+    ========================== -->
+
+    <section class="secret-section" id="secret">
+
+        <div class="section-title">
+
+            <h2>One More Thing 🔐</h2>
+
+            <p>
+                There is a little secret waiting for you.
+            </p>
+
+        </div>
+
+
+        <button
+            class="secret-btn"
+            onclick="showSecret()"
+        >
+            Open Secret ❤️
+        </button>
+
+
+        <div
+            class="secret-message"
+            id="secretMessage"
+        >
+
+            <h3>
+                You Are Special ❤️
+            </h3>
+
+            <br>
+
+            <p>
+                No matter how many days pass,
+                how far we go, or how much life changes,
+                there will always be a special place in my heart
+                that belongs to you.
+            </p>
+
+            <br>
+
+            <p>
+                Thank you for being a beautiful part of my life.
+            </p>
+
+            <br>
+
+            <strong>
+                Forever and always. ❤️
+            </strong>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         FOOTER
+    ========================== -->
+
+    <footer>
+
+        Made with <span>❤️</span> for someone special.
+
+        <br><br>
+
+        <small>
+            Our Little Universe
+        </small>
+
+    </footer>
+
+
+    <!-- =========================
+         JAVASCRIPT
+    ========================== -->
+
+    <script>
+
+        /* =========================
+           CURSOR
+        ========================== */
+
+        const cursor = document.querySelector(".cursor");
+        const cursorGlow = document.querySelector(".cursor-glow");
+
+        document.addEventListener("mousemove", function(event) {
+
+            cursor.style.left = event.clientX + "px";
+            cursor.style.top = event.clientY + "px";
+
+            cursorGlow.style.left = event.clientX + "px";
+            cursorGlow.style.top = event.clientY + "px";
+
+        });
+
+
+        /* =========================
+           OPEN LETTER
+        ========================== */
+
+        function openLetter() {
+
+            const envelope =
+                document.getElementById("envelope");
+
+            envelope.classList.toggle("open");
+
+        }
+
+
+        /* =========================
+           SECRET MESSAGE
+        ========================== */
+
+        function showSecret() {
+
+            const message =
+                document.getElementById("secretMessage");
+
+            message.classList.toggle("show");
+
+            createHeartExplosion(
+                window.innerWidth / 2,
+                window.innerHeight / 2
+            );
+
+        }
+
+
+        /* =========================
+           CLICK HEART PARTICLES
+        ========================== */
+
+        document.addEventListener("click", function(event) {
+
+            createHeartExplosion(
+                event.clientX,
+                event.clientY
+            );
+
+        });
+
+
+        function createHeartExplosion(x, y) {
+
+            const hearts = [
+                "❤️",
+                "💕",
+                "💖",
+                "💗",
+                "✨"
+            ];
+
+            for (let i = 0; i < 8; i++) {
+
+                const particle =
+                    document.createElement("div");
+
+                particle.classList.add("particle");
+
+                particle.innerHTML =
+                    hearts[
+                        Math.floor(
+                            Math.random() * hearts.length
+                        )
+                    ];
+
+                particle.style.left = x + "px";
+                particle.style.top = y + "px";
+
+                const randomX =
+                    (Math.random() - 0.5) * 180;
+
+                const randomY =
+                    (Math.random() - 0.5) * 180;
+
+                particle.style.setProperty(
+                    "--x",
+                    randomX + "px"
+                );
+
+                particle.style.setProperty(
+                    "--y",
+                    randomY + "px"
+                );
+
+                document.body.appendChild(particle);
+
+
+                setTimeout(function() {
+
+                    particle.remove();
+
+                }, 1500);
+
+            }
+
+        }
+
+
+        /* =========================
+           PREVENT PARTICLES
+           ON MOBILE EXCESSIVELY
+        ========================== */
+
+        let lastClick = 0;
+
+        document.addEventListener("click", function() {
+
+            const now = Date.now();
+
+            if (now - lastClick < 100) {
+                return;
+            }
+
+            lastClick = now;
+
+        });
+
+
+    </script>
+
+</body>
+</html>
